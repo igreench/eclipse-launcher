@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+<extension
+    point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+    <launchConfigurationTabGroup
+        class="org.igreench.launcher.ui.LauncherTabGroup"
+        id="org.igreench.launcher.launcherTabGroup"
+        type="org.igreench.launcher.launcherType">
+    </launchConfigurationTabGroup>
+</extension> 
+
+<extension
+        point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+    <launchConfigurationTypeImage
+            id="org.igreench.launcher.ui.launch.launcherConfigurationTypeImage"
+            configTypeID="org.igreench.launcher.launcherType"
+            icon="icons/launcher.png">
+    </launchConfigurationTypeImage>
+</extension> 
+
+</plugin>

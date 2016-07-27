@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Launcher
+Bundle-SymbolicName: org.igreench.launcher;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.igreench.launcher.LauncherPlugin
+Bundle-Vendor: igreench
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.debug.core;bundle-version="3.10.100",
+ org.eclipse.jdt.launching;bundle-version="3.8.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.igreench.launcher

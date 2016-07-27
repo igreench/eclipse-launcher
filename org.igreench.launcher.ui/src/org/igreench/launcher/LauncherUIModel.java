@@ -32,13 +32,15 @@ class LauncherUIModel implements ILauncherUIModel {
 	private List<String> launchTypes = new ArrayList<String>();
 	
 	private ILauncherModel launcherModel;
+	
+	private List<ILauncherUIModelListener> listeners = new ArrayList<ILauncherUIModelListener>();
 
 	public LauncherUIModel(ILauncherModel launcherModel) {
 		this.launcherModel = launcherModel;
 		launcherModel.addListener(new ILauncherModelListener() {
 			@Override
 			public void launcherModelChanged() {
-				updateLaunchConfigurations();
+				updateLaunchConfigurations();				
 			}
 		});
 		updateLaunchConfigurations();
@@ -51,6 +53,10 @@ class LauncherUIModel implements ILauncherUIModel {
 
 				if (-1 == launchTypes.indexOf(launchConfiguration.getType().getName())) {
 					launchTypes.add(launchConfiguration.getType().getName());
+				}
+				
+				for (ILauncherUIModelListener listener : listeners) {
+					listener.launcherModelChanged();
 				}
 			}
 		} catch (CoreException e) {
@@ -81,5 +87,13 @@ class LauncherUIModel implements ILauncherUIModel {
 	public void clear() {
 		launcherModel.clear();
 		selectedLaunchNames.clear();
+	}
+	
+	public void addListener(ILauncherUIModelListener listener) {
+		listeners.add(listener);
+	}
+	
+	public void removeListener(ILauncherUIModelListener listener) {
+		listeners.remove(listener);
 	}
 }

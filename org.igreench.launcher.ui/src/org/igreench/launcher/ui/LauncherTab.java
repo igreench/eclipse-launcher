@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
+
 import org.igreench.launcher.ILauncherAttributeModel;
 import org.igreench.launcher.LauncherPlugin;
 import org.igreench.launcher.LauncherPlugin.CycledLauncherAttributeModelException;

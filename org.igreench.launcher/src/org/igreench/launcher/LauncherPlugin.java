@@ -145,7 +145,7 @@ public class LauncherPlugin extends Plugin {
 		Set<String> launchNames = new HashSet<String>(currentLauncherAttributeModel.getLaunchNames());
 
 		for (String launchName : launchNames) {
-			
+
 			if (currentLaunchConfiguration.getName().equals(launchName)) {
 				throw new CycledLauncherAttributeModelException();
 			}
@@ -154,8 +154,8 @@ public class LauncherPlugin extends Plugin {
 				throw new DeletedLaunchLauncherAttributeModelException();
 			}
 
-			if (getDefault().getLauncherModel().getLaunchConfiguration(launchName).getType()
-					.equals(currentLaunchConfiguration.getType())) {
+			if (getDefault().getLauncherModel().getLaunchConfiguration(launchName).getType().getName()
+					.equals(currentLaunchConfiguration.getType().getName())) {
 
 				ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities
 						.getAttributes(getDefault().getLauncherModel().getLaunchConfiguration(launchName));

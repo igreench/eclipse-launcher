@@ -28,4 +28,8 @@ public interface ILauncherUIModel {
 	public Image getLaunchConfigurationImage(ILaunchConfiguration configuration);
 
 	public void clear();
+	
+	public void addListener(ILauncherUIModelListener listener);
+	
+	public void removeListener(ILauncherUIModelListener listener);
 }

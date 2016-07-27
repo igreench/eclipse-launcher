@@ -18,10 +18,6 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 
 public interface ILauncherModel {
 	
-	public void addListener(ILauncherModelListener listener);
-	
-	public void removeListener(ILauncherModelListener listener);
-
 	public void clear();
 
 	public void updateLaunchConfigurations();
@@ -39,5 +35,9 @@ public interface ILauncherModel {
 	public Set<String> getLaunchNames();
 	
 	public boolean containsLaunchConfiguration(String launchName);
+	
+	public void addListener(ILauncherModelListener listener);
+	
+	public void removeListener(ILauncherModelListener listener);
 
 }

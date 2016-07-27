@@ -89,11 +89,17 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate {
 
 		ILaunch currentLaunch = configurations.get(0).launch(modes.get(0), monitor);
 
-		System.out.println("Launching " + configurations.get(0).getName() + " in " + modes.get(0) + " mode");
+		if (launchNames.size() < 2) {
+			return;
+		}
 
-		LaunchAdapter launchAdapter = new LaunchAdapter(currentLaunch, configurations, modes, 1, monitor);
+		LauncherAdapter launchAdapter = new LauncherAdapter(currentLaunch, configurations, modes, 1, monitor);
 
 		DebugPlugin.getDefault().getLaunchManager().addLaunchListener(launchAdapter);
+
+		if (!launch.isTerminated()) {
+			launch.terminate();
+		}
 	}
 
 	private static void delay(int value) {
@@ -105,7 +111,7 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate {
 	}
 }
 
-class LaunchAdapter implements ILaunchesListener2 {
+class LauncherAdapter implements ILaunchesListener2 {
 
 	private ILaunch currentLaunch;
 
@@ -117,7 +123,7 @@ class LaunchAdapter implements ILaunchesListener2 {
 
 	private int nextLaunchIndex;
 
-	protected LaunchAdapter(ILaunch currentLaunch, List<ILaunchConfiguration> configurations, List<String> modes,
+	protected LauncherAdapter(ILaunch currentLaunch, List<ILaunchConfiguration> configurations, List<String> modes,
 			int nextLaunchIndex, IProgressMonitor monitor) {
 		this.currentLaunch = currentLaunch;
 		this.configurations = configurations;
@@ -142,9 +148,6 @@ class LaunchAdapter implements ILaunchesListener2 {
 	public void launchesTerminated(ILaunch[] launches) {
 		if (Arrays.asList(launches).contains(currentLaunch)) {
 
-			System.out.println("Terminating " + currentLaunch.getLaunchConfiguration().getName() + " in "
-					+ currentLaunch.getLaunchMode() + " mode");
-
 			DebugPlugin.getDefault().getLaunchManager().removeLaunchListener(this);
 
 			if (null == configurations.get(nextLaunchIndex) || null == modes.get(nextLaunchIndex)) {
@@ -152,12 +155,10 @@ class LaunchAdapter implements ILaunchesListener2 {
 			}
 
 			try {
-				System.out.println("Launching " + configurations.get(nextLaunchIndex).getName() + " in "
-						+ modes.get(nextLaunchIndex) + " mode");
 				ILaunch nextLaunch = configurations.get(nextLaunchIndex).launch(modes.get(nextLaunchIndex), monitor);
 				if (nextLaunchIndex < configurations.size() - 1) {
 					DebugPlugin.getDefault().getLaunchManager().addLaunchListener(
-							new LaunchAdapter(nextLaunch, configurations, modes, nextLaunchIndex + 1, monitor));
+							new LauncherAdapter(nextLaunch, configurations, modes, nextLaunchIndex + 1, monitor));
 				}
 			} catch (CoreException e) {
 				LauncherPlugin.log(e);

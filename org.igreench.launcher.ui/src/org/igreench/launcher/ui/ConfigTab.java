@@ -60,7 +60,7 @@ public class ConfigTab extends AbstractLaunchConfigurationTab {
 		
 		LauncherUIPlugin.getDefault().getLauncherUIModel().addListener(new ILauncherUIModelListener() {			
 			@Override
-			public void launcherModelChanged() {
+			public void launcherUIModelChanged() {
 				try {
 					LauncherUIUtilities.updateConfigurationWidget(configWidget);
 				} catch (CoreException e) {

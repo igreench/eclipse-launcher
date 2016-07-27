@@ -96,6 +96,16 @@ public class LauncherUIPlugin extends AbstractLauncherUIPlugin {
 	}
 
 	/**
+	 * Returns the launcher model.
+	 *
+	 * @return the launcher model
+	 * @see LauncherModel
+	 */
+	public synchronized ILauncherModel getLauncherModel() {
+		return LauncherPlugin.getDefault().getLauncherModel();
+	}
+
+	/**
 	 * Returns the launcher UI model.
 	 *
 	 * @return the launcher UI model
@@ -166,15 +176,15 @@ public class LauncherUIPlugin extends AbstractLauncherUIPlugin {
 			for (int i = 0; i < launcherAttributeModel.getIterationsCount(); i++) {
 				int value = JavaUtilities.strToInt(launcherAttributeModel.getIterationDelays().get(i), -1);
 
-				/*
-				 * Dirty hack: (-1 == value) -> add iteration; (-1 != value) ->
-				 * add delay.
-				 */
+				// (-1 == value) -> add iteration;
+				// (-1 != value) -> add delay.
+				
 				if (-1 == value) {
 					launcherWidget.addRoot(LauncherUIUtilities.getIterationName(),
 							LauncherUIPlugin.getDefault().getIterationImage(), true, true);
-
+					
 				} else {
+					
 					launcherWidget.addRoot(LauncherUIUtilities.getDelaynName(value),
 							LauncherUIPlugin.getDefault().getDelayImage(), true, false);
 				}

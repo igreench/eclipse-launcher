@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.igreench.launcher;
 
-public interface ILauncherUIModelListener extends ILauncherModelListener {
+public interface ILauncherUIModelListener {
 	
+	public void launcherUIModelChanged();
 }

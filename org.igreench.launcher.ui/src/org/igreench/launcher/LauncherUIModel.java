@@ -26,7 +26,7 @@ class LauncherUIModel implements ILauncherUIModel {
 	private List<String> selectedLaunchNames = new ArrayList<String>();
 	
 	private IDebugModelPresentation debugModelPresentation = DebugUITools.newDebugModelPresentation();
-	
+		
 	protected Map<String, Image> launchTypeIcons = new HashMap<String, Image>();
 	
 	private List<String> launchTypes = new ArrayList<String>();
@@ -56,7 +56,7 @@ class LauncherUIModel implements ILauncherUIModel {
 				}
 				
 				for (ILauncherUIModelListener listener : listeners) {
-					listener.launcherModelChanged();
+					listener.launcherUIModelChanged();
 				}
 			}
 		} catch (CoreException e) {

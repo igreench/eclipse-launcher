@@ -22,7 +22,16 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.osgi.framework.BundleContext;
 
 /**
- * The activator class controls the plug-in life cycle
+ * There is one instance of the launcher plug-in available from
+ * <code>Launcher.getDefault()</code>. The launcher plug-in provides:
+ * <ul>
+ * <li>access to the launcher model</li>
+ * <li>validation method</li>
+ * <li>validation exceptions</li>
+ * <li>status handlers</li>
+ * </ul>
+ * 
+ * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public class LauncherPlugin extends Plugin {
 
@@ -35,7 +44,7 @@ public class LauncherPlugin extends Plugin {
 	private ILauncherModel launcherModel;
 
 	/**
-	 * The constructor
+	 * The constructor <code>LauncherPlugin()</code>
 	 */
 	public LauncherPlugin() {
 		super();
@@ -69,7 +78,6 @@ public class LauncherPlugin extends Plugin {
 	 *
 	 * @return the launcher plug-in
 	 */
-
 	public static LauncherPlugin getDefault() {
 		LauncherPlugin localInstance = launcherPlugin;
 		if (null == localInstance) {
@@ -134,10 +142,9 @@ public class LauncherPlugin extends Plugin {
 
 	}
 
-	/*
+	/**
 	 * Validation ILauncherAttributeModel
 	 */
-
 	public void validate(ILaunchConfiguration currentLaunchConfiguration,
 			ILauncherAttributeModel currentLauncherAttributeModel)
 			throws LauncherAttributeModelException, CoreException {

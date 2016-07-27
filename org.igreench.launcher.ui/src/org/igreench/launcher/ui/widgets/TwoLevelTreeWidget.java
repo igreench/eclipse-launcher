@@ -94,47 +94,47 @@ public class TwoLevelTreeWidget implements ITwoLevelTreeWidget {
 	public void setLayoutData(Object layoutData) {
 		composite.setLayoutData(layoutData);
 	}
-	
+
 	@Override
 	public void addRoot(String rootName) {
 		addRoot(rootName, false, false);
 	}
-	
+
 	@Override
 	public void addRoot(String rootName, Image rootImage) {
 		addRoot(rootName, rootImage, false, false);
 	}
-	
+
 	@Override
 	public void addRoot(String[] rootName) {
 		addRoot(rootName, false, false);
 	}
-	
+
 	@Override
 	public void addRoot(String[] rootName, Image rootImage) {
 		addRoot(rootName, rootImage, false, false);
 	}
-	
+
 	@Override
 	public void addNode(int rootIndex, String[] nodeName) {
 		addNode(rootIndex, nodeName, false, false);
 	}
-	
+
 	@Override
 	public void addNode(int rootIndex, String[] nodeName, Image nodeImage) {
 		addNode(rootIndex, nodeName, nodeImage, false, false);
 	}
-	
+
 	@Override
 	public void addNode(TreeItem root, String[] node) {
 		addNode(root, node, false, false);
 	}
-	
+
 	@Override
 	public void addNode(TreeItem root, String[] node, Image nodeImage) {
 		addNode(root, node, nodeImage, false, false);
 	}
-	
+
 	@Override
 	public void addRoot(String rootName, boolean isDraggable, boolean isDroppable) {
 		addRoot(rootName, null, isDraggable, isDroppable);
@@ -142,7 +142,7 @@ public class TwoLevelTreeWidget implements ITwoLevelTreeWidget {
 
 	@Override
 	public void addRoot(String rootName, Image rootImage, boolean isDraggable, boolean isDroppable) {
-		addRoot(new String[]{ rootName }, rootImage, isDraggable, isDroppable);
+		addRoot(new String[] { rootName }, rootImage, isDraggable, isDroppable);
 	}
 
 	@Override
@@ -169,7 +169,7 @@ public class TwoLevelTreeWidget implements ITwoLevelTreeWidget {
 	}
 
 	@Override
-	public void addNode(int rootIndex, String[] node, Image nodeImage, boolean isDraggable, boolean isDroppable) {	
+	public void addNode(int rootIndex, String[] node, Image nodeImage, boolean isDraggable, boolean isDroppable) {
 		if (0 <= rootIndex && tree.getItemCount() > rootIndex) {
 			addNode(tree.getItem(rootIndex), node, nodeImage, isDraggable, isDroppable);
 		}
@@ -203,8 +203,11 @@ public class TwoLevelTreeWidget implements ITwoLevelTreeWidget {
 
 	@Override
 	public void clear() {
-		for (Control child : tree.getChildren()) {
-			child.dispose();
+		if (0 > tree.getItems().length) {
+			return;
+		}
+		for (TreeItem item : tree.getItems()) {
+			item.dispose();
 		}
 		dndAdapter.clear();
 	}

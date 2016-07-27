@@ -11,11 +11,11 @@
 package org.igreench.launcher;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
@@ -23,7 +23,11 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 
 class LauncherModel implements ILauncherModel {
 
-	protected Map<String, ILaunchConfiguration> launchConfigurationsMap = new HashMap<String, ILaunchConfiguration>();
+	/**
+	 * Map of launch configurations by their names. TreeMap uses for sorting
+	 * launch configurations by the name.
+	 */
+	protected Map<String, ILaunchConfiguration> launchConfigurationsMap = new TreeMap<String, ILaunchConfiguration>();
 
 	private List<ILauncherModelListener> listeners = new ArrayList<ILauncherModelListener>();
 

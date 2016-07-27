@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.igreench.launcher;
 
+/**
+ * Contains the key names for Launcher plug-in image registry.
+ */
 public final class LauncherUIImages {
-	
-	/**
-	 * Contains the key names for Launcher plug-in image registry.
-	 */
 	
 	public static final String LAUNCHER_ICON = LauncherUIPlugin.PLUGIN_ID + ".images.launcher"; //$NON-NLS-1$
 	

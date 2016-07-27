@@ -24,11 +24,7 @@ import org.eclipse.debug.core.ILaunchesListener2;
 
 public class LauncherDelegate implements ILaunchConfigurationDelegate {
 
-	/*
-	 * Launch Launcher's launch configuration.
-	 * 
-	 * Method need to split.
-	 * 
+	/* 
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -74,7 +70,7 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate {
 		}
 	}
 
-	/*
+	/**
 	 * Launch group of launches. Launches in one iteration will be wait
 	 * terminating previous launches.
 	 */

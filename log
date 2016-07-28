@@ -1,16 +1,22 @@
 Last fix: 
+
+24.07.2016
 + DND Event Update
 + Launch Configuration Listener
 + removeDNDItem in LauncherTab
 + LauncherModel - Map<String, ILaunchConfiguration> launches
 + update launcherWidget after updateLC (after add/change/del lcs)
 + getLaunchModes
+
+25.07.2016
 + check encapsulation
 + split LauncherUIAttributeUtilities to two classes
 + Display -> LauncherPlugin.getDefault().getStandartDisplay()
 + check for empty in numeric dialog
 + check for empty in tree dialog
 + NLS
+
+26.07.2016
 + final (nothing done)
 + Contaiters (nothing done)
 + IDNDDelegate name refactor
@@ -21,7 +27,13 @@ Last fix:
 + Split class LauncherUIUtilities
 + delegate. lc. launch. delay.
 + Split method launch() in LauncherDelegate
+
+27.07.2016
 + debug launch delay
 + debug next launch
 + debug with delay dnd
 + pom.xml
++ Sorting nodes in TreeWidget
+
+28.07.2016
++ fixed bug with listening to termination event of launcher's launch

@@ -98,7 +98,7 @@ public final class LauncherUIUtilities {
 		return LauncherUIStrings.ITERATION_LABEL;
 	}
 
-	public static String[] getDelaynName(int value) {
+	public static String[] getDelayName(int value) {
 		return new String[] { LauncherUIStrings.DELAY_LABEL, String.valueOf(value) };
 	}
 

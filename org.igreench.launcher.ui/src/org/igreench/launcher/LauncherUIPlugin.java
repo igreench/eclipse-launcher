@@ -185,7 +185,7 @@ public class LauncherUIPlugin extends AbstractLauncherUIPlugin {
 					
 				} else {
 					
-					launcherWidget.addRoot(LauncherUIUtilities.getDelaynName(value),
+					launcherWidget.addRoot(LauncherUIUtilities.getDelayName(value),
 							LauncherUIPlugin.getDefault().getDelayImage(), true, false);
 				}
 			}

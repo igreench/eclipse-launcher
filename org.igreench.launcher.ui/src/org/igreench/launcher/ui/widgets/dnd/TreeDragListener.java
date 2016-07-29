@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher.ui.widgets;
+package org.igreench.launcher.ui.widgets.dnd;
 
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSourceEvent;

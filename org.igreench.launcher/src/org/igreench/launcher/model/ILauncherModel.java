@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher;
+package org.igreench.launcher.model;
 
 import java.util.Map;
 import java.util.Set;

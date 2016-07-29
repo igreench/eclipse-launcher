@@ -8,9 +8,9 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher;
+package org.igreench.launcher.model;
 
-public interface ILauncherUIModelListener {
+public interface ILauncherModelListener {
 	
-	public void launcherUIModelChanged();
+	public void launcherModelChanged();
 }

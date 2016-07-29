@@ -27,19 +27,18 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
-
-import org.igreench.launcher.ILauncherAttributeModel;
 import org.igreench.launcher.LauncherPlugin;
 import org.igreench.launcher.LauncherPlugin.CycledLauncherAttributeModelException;
 import org.igreench.launcher.LauncherPlugin.DeletedLaunchLauncherAttributeModelException;
 import org.igreench.launcher.LauncherPlugin.LauncherAttributeModelException;
+import org.igreench.launcher.model.ILauncherAttributeModel;
 import org.igreench.launcher.LauncherUIPlugin;
 import org.igreench.launcher.ui.widgets.TreeDialog;
 import org.igreench.launcher.ui.widgets.ComboDialog;
 import org.igreench.launcher.ui.widgets.NumericTextDialog;
 import org.igreench.launcher.ui.widgets.TwoLevelTreeWidget;
+import org.igreench.launcher.ui.widgets.dnd.IDNDModel.IDNDListener;
 import org.igreench.launcher.ui.widgets.ITwoLevelTreeWidget;
-import org.igreench.launcher.ui.widgets.IDNDModel.IDNDListener;
 import org.igreench.launcher.ui.widgets.LauncherUIWidgetsUtilities;
 
 public class LauncherTab extends AbstractLaunchConfigurationTab {

@@ -25,7 +25,6 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Layout;
@@ -33,8 +32,11 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-
-import org.igreench.launcher.ui.widgets.IDNDModel.IDNDListener;
+import org.igreench.launcher.ui.widgets.dnd.DNDModel;
+import org.igreench.launcher.ui.widgets.dnd.IDNDModel;
+import org.igreench.launcher.ui.widgets.dnd.TreeDragListener;
+import org.igreench.launcher.ui.widgets.dnd.TreeDropListener;
+import org.igreench.launcher.ui.widgets.dnd.IDNDModel.IDNDListener;
 
 public class TwoLevelTreeWidget implements ITwoLevelTreeWidget {
 

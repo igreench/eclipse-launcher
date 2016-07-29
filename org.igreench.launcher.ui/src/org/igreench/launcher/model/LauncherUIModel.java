@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher;
+package org.igreench.launcher.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,8 +20,9 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.swt.graphics.Image;
+import org.igreench.launcher.LauncherUIPlugin;
 
-class LauncherUIModel implements ILauncherUIModel {
+public class LauncherUIModel implements ILauncherUIModel {
 
 	private List<String> selectedLaunchNames = new ArrayList<String>();
 	

@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher.ui.widgets;
+package org.igreench.launcher.ui.widgets.dnd;
 
 public interface IDNDModel<T> {
 	

@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher.ui.widgets;
+package org.igreench.launcher.ui.widgets.dnd;
 
 import java.util.ArrayList;
 import java.util.HashMap;

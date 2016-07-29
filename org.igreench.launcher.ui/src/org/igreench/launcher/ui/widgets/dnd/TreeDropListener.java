@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher.ui.widgets;
+package org.igreench.launcher.ui.widgets.dnd;
 
 import java.util.Arrays;
 
@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.igreench.launcher.ui.widgets.TreeUtilities;
 
 public class TreeDropListener extends DropTargetAdapter {
 

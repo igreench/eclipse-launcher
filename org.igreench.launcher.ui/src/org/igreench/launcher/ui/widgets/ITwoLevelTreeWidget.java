@@ -16,7 +16,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TreeItem;
-import org.igreench.launcher.ui.widgets.IDNDModel.IDNDListener;
+import org.igreench.launcher.ui.widgets.dnd.IDNDModel.IDNDListener;
 
 public interface ITwoLevelTreeWidget {
 	

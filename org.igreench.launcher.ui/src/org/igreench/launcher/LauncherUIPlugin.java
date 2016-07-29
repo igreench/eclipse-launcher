@@ -22,6 +22,11 @@ import org.eclipse.swt.graphics.Image;
 import org.osgi.framework.BundleContext;
 
 import org.igreench.launcher.LauncherPlugin;
+import org.igreench.launcher.model.ILauncherAttributeModel;
+import org.igreench.launcher.model.ILauncherModel;
+import org.igreench.launcher.model.ILauncherUIModel;
+import org.igreench.launcher.model.LauncherAttributeModel;
+import org.igreench.launcher.model.LauncherUIModel;
 import org.igreench.launcher.ui.LauncherUIUtilities;
 import org.igreench.launcher.ui.widgets.ITwoLevelTreeWidget;
 

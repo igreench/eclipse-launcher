@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
-            delegate="org.igreench.launcher.LauncherDelegate"
+            delegate="org.igreench.launcher.launch.LauncherDelegate"
             id="org.igreench.launcher.launcherType"
             modes="run, debug"
             name="Launcher"

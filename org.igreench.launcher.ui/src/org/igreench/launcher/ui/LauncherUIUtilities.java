@@ -15,10 +15,9 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.graphics.Image;
-
-import org.igreench.launcher.ILauncherModel;
 import org.igreench.launcher.LauncherPlugin;
 import org.igreench.launcher.LauncherUIPlugin;
+import org.igreench.launcher.model.ILauncherModel;
 import org.igreench.launcher.ui.widgets.ITwoLevelTreeWidget;
 
 public final class LauncherUIUtilities {

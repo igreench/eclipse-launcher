@@ -8,7 +8,7 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher;
+package org.igreench.launcher.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,8 +20,9 @@ import java.util.TreeMap;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.igreench.launcher.LauncherPlugin;
 
-class LauncherModel implements ILauncherModel {
+public class LauncherModel implements ILauncherModel {
 
 	/**
 	 * Map of launch configurations by their names. TreeMap uses for sorting

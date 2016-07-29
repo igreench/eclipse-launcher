@@ -19,8 +19,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.igreench.launcher.ILauncherUIModelListener;
 import org.igreench.launcher.LauncherUIPlugin;
+import org.igreench.launcher.model.ILauncherUIModelListener;
 import org.igreench.launcher.ui.widgets.TwoLevelTreeWidget;
 
 /**

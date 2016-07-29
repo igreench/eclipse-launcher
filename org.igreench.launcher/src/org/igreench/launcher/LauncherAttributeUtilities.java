@@ -17,6 +17,8 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 
 import org.igreench.launcher.LauncherAttributes;
+import org.igreench.launcher.model.ILauncherAttributeModel;
+import org.igreench.launcher.model.LauncherAttributeModel;
 
 public final class LauncherAttributeUtilities {
 

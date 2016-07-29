@@ -8,16 +8,17 @@
  * Contributors:
  *     Lipkin Evgenii
  *******************************************************************************/
-package org.igreench.launcher;
+package org.igreench.launcher.launch;
 
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationListener;
+import org.igreench.launcher.LauncherPlugin;
 
 /**
  * Tracks changes of launch configurations to make batch configurations be
  * actual.
  */
-class LaunchConfigurationListener implements ILaunchConfigurationListener {
+public class LaunchConfigurationListener implements ILaunchConfigurationListener {
 
 	/**
 	 * Handles adding of launch configurations.

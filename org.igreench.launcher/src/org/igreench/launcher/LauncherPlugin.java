@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.igreench.launcher.launch.LaunchConfigurationListener;
 import org.igreench.launcher.model.ILauncherAttributeModel;
 import org.igreench.launcher.model.ILauncherModel;
 import org.igreench.launcher.model.LauncherModel;

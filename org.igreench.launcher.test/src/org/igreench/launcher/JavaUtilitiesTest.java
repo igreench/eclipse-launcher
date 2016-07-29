@@ -8,6 +8,11 @@ public class JavaUtilitiesTest {
 	
 	@Test
 	public void strToInt() {
+		assertEquals(42, JavaUtilities.strToInt("42", 0));
+	}
+	
+	@Test
+	public void strToIntNull() {
 		assertEquals(-1, JavaUtilities.strToInt(null, -1));
 	}
 }

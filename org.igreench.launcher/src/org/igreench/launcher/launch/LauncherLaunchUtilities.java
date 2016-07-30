@@ -78,7 +78,7 @@ final class LauncherLaunchUtilities {
 			List<ILaunchConfiguration> configurations, List<String> modes, int nextLaunchIndex,
 			IProgressMonitor monitor) {
 
-		if (null == configurations.get(nextLaunchIndex) || null == modes.get(nextLaunchIndex)) {
+		if (nextLaunchIndex >= configurations.size() || nextLaunchIndex >= modes.size()) {
 			return;
 		}
 

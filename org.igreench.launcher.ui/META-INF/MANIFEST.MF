@@ -5,16 +5,6 @@ Bundle-SymbolicName: org.igreench.launcher.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.igreench.launcher.LauncherUIPlugin
 Bundle-Vendor: igreench
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.debug.core;bundle-version="3.10.100",
- org.eclipse.debug.ui;bundle-version="3.11.200",
- org.eclipse.jdt.launching;bundle-version="3.8.100",
- org.eclipse.jdt.debug.ui;bundle-version="3.7.200",
- org.igreench.launcher;bundle-version="1.0.0",
- org.eclipse.swt
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
 Export-Package: org.igreench.launcher;
   uses:="org.eclipse.swt.events,
    org.eclipse.swt.graphics,
@@ -26,4 +16,18 @@ Export-Package: org.igreench.launcher;
    org.osgi.framework,
    org.eclipse.ui,
    org.eclipse.core.runtime,
-   org.eclipse.debug.ui"
+   org.eclipse.debug.ui",
+ org.igreench.launcher.model,
+ org.igreench.launcher.ui,
+ org.igreench.launcher.ui.widgets,
+ org.igreench.launcher.ui.widgets.dnd
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core;bundle-version="3.10.100",
+ org.eclipse.debug.ui;bundle-version="3.11.200",
+ org.eclipse.jdt.launching;bundle-version="3.8.100",
+ org.eclipse.jdt.debug.ui;bundle-version="3.7.200",
+ org.igreench.launcher;bundle-version="1.0.0",
+ org.eclipse.swt
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy

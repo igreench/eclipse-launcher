@@ -39,6 +39,4 @@ public interface IDNDModel<T> {
 	public void removeDNDListener(IDNDListener listener);
 	
 	public void update();
-	
-	public void print();
 }

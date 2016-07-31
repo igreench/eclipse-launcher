@@ -149,16 +149,4 @@ public class DNDModel<T> implements IDNDModel<T> {
 			listener.changed();
 		}
 	}
-	
-	@Override
-	public void print() {
-		System.out.println("items");
-		System.out.println(items);
-		System.out.println("draggingData");
-		System.out.println(draggingData);
-		System.out.println("draggingMap");
-		System.out.println(draggingMap);
-		System.out.println("droppingMap");
-		System.out.println(droppingMap);
-	}
 }

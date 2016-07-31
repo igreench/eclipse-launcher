@@ -1,6 +1,6 @@
 package org.igreench.launcher.model;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 

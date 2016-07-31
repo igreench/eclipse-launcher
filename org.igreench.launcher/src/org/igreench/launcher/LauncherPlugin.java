@@ -118,7 +118,7 @@ public class LauncherPlugin extends Plugin {
 		return launcherModel;
 	}
 
-	public class LauncherAttributeModelException extends Exception {
+	public static class LauncherAttributeModelException extends Exception {
 
 		/**
 		 * serialVersionUID
@@ -126,7 +126,7 @@ public class LauncherPlugin extends Plugin {
 		private static final long serialVersionUID = -205095149255645770L;
 	}
 
-	public class CycledLauncherAttributeModelException extends LauncherAttributeModelException {
+	public static class CycledLauncherAttributeModelException extends LauncherAttributeModelException {
 
 		public CycledLauncherAttributeModelException() {
 		}
@@ -137,7 +137,7 @@ public class LauncherPlugin extends Plugin {
 		private static final long serialVersionUID = -2995855990107279611L;
 	}
 
-	public class DeletedLaunchLauncherAttributeModelException extends LauncherAttributeModelException {
+	public static class DeletedLaunchLauncherAttributeModelException extends LauncherAttributeModelException {
 
 		/**
 		 * serialVersionUID
@@ -153,25 +153,54 @@ public class LauncherPlugin extends Plugin {
 			ILauncherAttributeModel currentLauncherAttributeModel)
 			throws LauncherAttributeModelException, CoreException {
 
+		validate(currentLaunchConfiguration, currentLauncherAttributeModel, getDefault().getLauncherModel());
+	}
+
+	protected static Set<String> launcherLaunchNames = new HashSet<String>();
+
+	/**
+	 * Validation ILauncherAttributeModel
+	 */
+	public static void validate(ILaunchConfiguration currentLaunchConfiguration,
+			ILauncherAttributeModel currentLauncherAttributeModel, ILauncherModel launcherModel)
+			throws LauncherAttributeModelException, CoreException {
+
+		try {
+			launcherLaunchNames.add(currentLaunchConfiguration.getName());
+			validate2(currentLaunchConfiguration, currentLauncherAttributeModel, getDefault().getLauncherModel());
+		} finally {
+			launcherLaunchNames.clear();
+		}
+	}
+
+	/**
+	 * Validation ILauncherAttributeModel
+	 */
+	protected static void validate2(ILaunchConfiguration currentLaunchConfiguration,
+			ILauncherAttributeModel currentLauncherAttributeModel, ILauncherModel launcherModel)
+			throws LauncherAttributeModelException, CoreException {
+
 		Set<String> launchNames = new HashSet<String>(currentLauncherAttributeModel.getLaunchNames());
 
 		for (String launchName : launchNames) {
 
-			if (currentLaunchConfiguration.getName().equals(launchName)) {
+			if (launcherLaunchNames.contains(launchName)) {
 				throw new CycledLauncherAttributeModelException();
 			}
 
-			if (!getDefault().getLauncherModel().containsLaunchConfiguration(launchName)) {
+			if (!launcherModel.containsLaunchConfiguration(launchName)) {
 				throw new DeletedLaunchLauncherAttributeModelException();
 			}
 
-			if (getDefault().getLauncherModel().getLaunchConfiguration(launchName).getType().getName()
+			if (launcherModel.getLaunchConfiguration(launchName).getType().getName()
 					.equals(currentLaunchConfiguration.getType().getName())) {
 
-				ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities
-						.getAttributes(getDefault().getLauncherModel().getLaunchConfiguration(launchName));
+				launcherLaunchNames.add(launchName);
 
-				validate(currentLaunchConfiguration, launcherAttributeModel);
+				ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities
+						.getAttributes(launcherModel.getLaunchConfiguration(launchName));
+
+				validate(currentLaunchConfiguration, launcherAttributeModel, launcherModel);
 			}
 		}
 	}

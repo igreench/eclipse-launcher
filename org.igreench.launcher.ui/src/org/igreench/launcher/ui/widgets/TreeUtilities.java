@@ -28,6 +28,10 @@ public final class TreeUtilities {
 	
 	public static List<String> getNodeName(TreeItem node) {
 		List<String> nodeName = new ArrayList<String>();
+		if (0 == node.getParent().getColumnCount()) {
+			nodeName.add(node.getText());
+			return nodeName;
+		}
 		for (int i = 0; i < node.getParent().getColumnCount(); i++) {
 			nodeName.add(node.getText(i));
 		}

@@ -167,7 +167,7 @@ public class LauncherPlugin extends Plugin {
 
 		try {
 			launcherLaunchNames.add(currentLaunchConfiguration.getName());
-			validate2(currentLaunchConfiguration, currentLauncherAttributeModel, getDefault().getLauncherModel());
+			validate2(currentLaunchConfiguration, currentLauncherAttributeModel, launcherModel);
 		} finally {
 			launcherLaunchNames.clear();
 		}

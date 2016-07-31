@@ -16,8 +16,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
-import org.eclipse.jdt.debug.ui.launchConfigurations.JavaMainTab;
-import org.eclipse.jdt.internal.debug.ui.IJavaDebugHelpContextIds;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -64,7 +62,6 @@ public class LauncherTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public void createControl(Composite parent) {
-		JavaMainTab f;
 		// Create main composite
 		Composite mainComposite = new Composite(parent, SWT.NONE);
 		setControl(mainComposite);
@@ -75,8 +72,6 @@ public class LauncherTab extends AbstractLaunchConfigurationTab {
 		createLabels(mainComposite);
 		createLaunchWidget(mainComposite);
 		createWidgetButtons(mainComposite);
-		
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(getControl(), IJavaDebugHelpContextIds.LAUNCH_CONFIGURATION_DIALOG_MAIN_TAB);
 	}
 
 	protected void createLabels(Composite parent) {

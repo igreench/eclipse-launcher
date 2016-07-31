@@ -145,12 +145,6 @@ public class LauncherPlugin extends Plugin {
 		private static final long serialVersionUID = 5438395328507690588L;
 
 	}
-	
-	private boolean isValid = false;
-	
-	public boolean isValid() {
-		return isValid;
-	}
 
 	/**
 	 * Validation ILauncherAttributeModel
@@ -159,13 +153,7 @@ public class LauncherPlugin extends Plugin {
 			ILauncherAttributeModel currentLauncherAttributeModel)
 			throws LauncherAttributeModelException, CoreException {
 
-		isValid = true;
-		try {
-			validate(currentLaunchConfiguration, currentLauncherAttributeModel, getDefault().getLauncherModel());
-		} catch (Throwable e) {
-			isValid = false;
-			throw e;
-		}
+		validate(currentLaunchConfiguration, currentLauncherAttributeModel, getDefault().getLauncherModel());
 	}
 
 	protected static Set<String> launcherLaunchNames = new HashSet<String>();

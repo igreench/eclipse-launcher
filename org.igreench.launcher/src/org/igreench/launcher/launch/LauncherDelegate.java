@@ -54,27 +54,24 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate2 {
 					DebugPlugin.INTERNAL_ERROR, "Received not Launcher launch object", null)); //$NON-NLS-1$
 		}
 
-		if (!LauncherPlugin.getDefault().isValid()) {
-			try {
-				ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities
-						.getAttributes(configuration);
+		try {
+			ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 
-				LauncherPlugin.getDefault().validate(configuration, launcherAttributeModel);
+			LauncherPlugin.getDefault().validate(configuration, launcherAttributeModel);
 
-			} catch (DeletedLaunchLauncherAttributeModelException e) {
-				throw new CoreException(new Status(IStatus.ERROR, DebugPlugin.getUniqueIdentifier(),
-						DebugPlugin.INTERNAL_ERROR, "Found deleted launch", null)); //$NON-NLS-1$
+		} catch (DeletedLaunchLauncherAttributeModelException e) {
+			throw new CoreException(new Status(IStatus.ERROR, DebugPlugin.getUniqueIdentifier(),
+					DebugPlugin.INTERNAL_ERROR, "Found deleted launch", null)); //$NON-NLS-1$
 
-			} catch (CycledLauncherAttributeModelException e) {
-				throw new CoreException(new Status(IStatus.ERROR, DebugPlugin.getUniqueIdentifier(),
-						DebugPlugin.INTERNAL_ERROR, "Launcher's launch cycled", null)); //$NON-NLS-1$
+		} catch (CycledLauncherAttributeModelException e) {
+			throw new CoreException(new Status(IStatus.ERROR, DebugPlugin.getUniqueIdentifier(),
+					DebugPlugin.INTERNAL_ERROR, "Launcher's launch cycled", null)); //$NON-NLS-1$
 
-			} catch (LauncherAttributeModelException e) {
-				LauncherPlugin.log(e);
+		} catch (LauncherAttributeModelException e) {
+			LauncherPlugin.log(e);
 
-			} catch (CoreException e) {
-				LauncherPlugin.log(e);
-			}
+		} catch (CoreException e) {
+			LauncherPlugin.log(e);
 		}
 
 		launcherLaunch = (LauncherLaunch) commonLaunch;

@@ -7,12 +7,12 @@ import org.junit.Test;
 public class JavaUtilitiesTest {
 	
 	@Test
-	public void strToInt() {
+	public void strToIntTest1() {
 		assertEquals(42, JavaUtilities.strToInt("42", 0));
 	}
 	
 	@Test
-	public void strToIntNull() {
+	public void strToIntTest2() {
 		assertEquals(-1, JavaUtilities.strToInt(null, -1));
 	}
 }

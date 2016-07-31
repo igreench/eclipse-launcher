@@ -20,17 +20,12 @@ import org.eclipse.debug.core.ILaunchDelegate;
 public class TestLaunchConfig implements ILaunchConfiguration {
 
     private Map<String, Object> attributes = new HashMap<String, Object>();
-
-    public Map<String, Object> updatedAttributes = new HashMap<String, Object>();
-
-    // returns updated attribute
-    public Object getNewAttribute(final String attributeName) {
-        return updatedAttributes.get(attributeName);
-    }
     
     private String name;
     
     private ILaunchConfigurationType type;
+    
+    private TestWorkingCopy workingCopy;
     
     public TestLaunchConfig() {
     }
@@ -39,12 +34,10 @@ public class TestLaunchConfig implements ILaunchConfiguration {
     	this.name = name;
     	this.type = type;
     }
-
-    /*public TestLaunchConfig(final Map<String, Object> attributes) {
-        if (attributes != null) {
-            this.attributes = attributes;
-        }
-    }*/
+    
+    public void update(Map<String, Object> attributes) {
+    	this.attributes.putAll(attributes);
+    }
 
     public boolean contentsEqual(final ILaunchConfiguration configuration) {
         return false;
@@ -155,7 +148,10 @@ public class TestLaunchConfig implements ILaunchConfiguration {
     }
 
     public ILaunchConfigurationWorkingCopy getWorkingCopy() throws CoreException {
-        return new TestWorkingCopy(this);
+    	if (null == workingCopy) {
+    		workingCopy = new TestWorkingCopy(this);
+    	}
+        return workingCopy;
     }
 
     public boolean isLocal() {

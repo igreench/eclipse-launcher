@@ -29,13 +29,17 @@ public class TestWorkingCopy implements ILaunchConfigurationWorkingCopy {
     public TestWorkingCopy(TestLaunchConfig parent) {
         this.parent = parent;
     }
-
-    public void addModes(Set modes) {
+    
+    public void update() {        
+        parent.update(attributes);
     }
 
-    public ILaunchConfiguration doSave() throws CoreException {
-        parent.updatedAttributes.putAll(attributes);
+    public ILaunchConfiguration doSave() throws CoreException {        
+        parent.update(attributes);
         return parent;
+    }
+
+    public void addModes(Set modes) {
     }
 
     public boolean hasAttribute(String attributeName) throws CoreException {

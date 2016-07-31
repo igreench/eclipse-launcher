@@ -16,20 +16,11 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchDelegate;
 
 public class TestLaunchConfiguration implements ILaunchConfiguration {
-	
-	private String name;
-	
-	private ILaunchConfigurationType type;
-	
-	private Map<String, Integer> intAttributes;
-	private Map<String, String> stringAttributes;
-	private Map<String, List<String>> listAttributes;
-	private Map<String, Set<String>> setAttributes;
-	private Map<String, Map<String, String>> mapAttributes;
-	
+
+	private ILaunchConfigurationWorkingCopy workingCopy;
+
 	public TestLaunchConfiguration(String name, ILaunchConfigurationType type) {
-		this.name = name;
-		this.type = type;
+		workingCopy = new TestLaunchConfigurationWorkingCopy(name, type);
 	}
 
 	@Override
@@ -48,75 +39,60 @@ public class TestLaunchConfiguration implements ILaunchConfiguration {
 	}
 
 	@Override
-	public void delete() throws CoreException {		
+	public void delete() throws CoreException {
 	}
 
 	@Override
 	public boolean exists() {
-		return true;
+		return workingCopy.exists();
 	}
 
 	@Override
 	public boolean getAttribute(String attributeName, boolean defaultValue) throws CoreException {
-		return false;
+		return workingCopy.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public int getAttribute(String attributeName, int defaultValue) throws CoreException {
-		if (!intAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return intAttributes.get(attributeName);
+		return workingCopy.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public List<String> getAttribute(String attributeName, List<String> defaultValue) throws CoreException {
-		if (!listAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return listAttributes.get(attributeName);
+		return workingCopy.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public Set<String> getAttribute(String attributeName, Set<String> defaultValue) throws CoreException {
-		if (!setAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return setAttributes.get(attributeName);
+		return workingCopy.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public Map<String, String> getAttribute(String attributeName, Map<String, String> defaultValue)
 			throws CoreException {
-		if (!mapAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return mapAttributes.get(attributeName);
+		return workingCopy.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public String getAttribute(String attributeName, String defaultValue) throws CoreException {
-		if (!stringAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return stringAttributes.get(attributeName);
+		return workingCopy.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public Map<String, Object> getAttributes() throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
+		return workingCopy.getAttributes();
 	}
 
 	@Override
 	public String getCategory() throws CoreException {
-		return null;
+		return workingCopy.getCategory();
 	}
 
 	@Override
 	public IFile getFile() {
-		return null;
+		return workingCopy.getFile();
 	}
+
 
 	@Override
 	public IPath getLocation() {
@@ -125,95 +101,88 @@ public class TestLaunchConfiguration implements ILaunchConfiguration {
 
 	@Override
 	public IResource[] getMappedResources() throws CoreException {
-		return null;
+		return workingCopy.getMappedResources();
 	}
 
 	@Override
 	public String getMemento() throws CoreException {
-		return null;
+		return workingCopy.getMemento();
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return workingCopy.getName();
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public Set<String> getModes() throws CoreException {
-		return type.getSupportedModes();
+		return workingCopy.getType().getSupportedModes();
 	}
 
 	@Override
 	public ILaunchDelegate getPreferredDelegate(Set<String> modes) throws CoreException {
-		return null;
+		return workingCopy.getPreferredDelegate(modes);
 	}
 
 	@Override
 	public ILaunchConfigurationType getType() throws CoreException {
-		return type;
+		return workingCopy.getType();
 	}
 
 	@Override
 	public ILaunchConfigurationWorkingCopy getWorkingCopy() throws CoreException {
-		return null;
+		return workingCopy;
 	}
 
 	@Override
 	public boolean hasAttribute(String attributeName) throws CoreException {
-		// TODO Auto-generated method stub
-		return true;
+		return workingCopy.hasAttribute(attributeName);
 	}
 
 	@Override
 	public boolean isLocal() {
-		return true;
+		return workingCopy.isLocal();
 	}
 
 	@Override
 	public boolean isMigrationCandidate() throws CoreException {
-		return true;
+		return workingCopy.isMigrationCandidate();
 	}
 
 	@Override
 	public boolean isWorkingCopy() {
-		return true;
+		return workingCopy.isWorkingCopy();
 	}
 
 	@Override
 	public ILaunch launch(String mode, IProgressMonitor monitor) throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
+		return workingCopy.launch(mode, monitor);
 	}
 
 	@Override
 	public ILaunch launch(String mode, IProgressMonitor monitor, boolean build) throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
+		return workingCopy.launch(mode, monitor, build);
 	}
 
 	@Override
 	public ILaunch launch(String mode, IProgressMonitor monitor, boolean build, boolean register) throws CoreException {
-		// TODO Auto-generated method stub
-		return null;
+		return workingCopy.launch(mode, monitor, build, register);
 	}
 
 	@Override
 	public void migrate() throws CoreException {
-		// TODO Auto-generated method stub
-		
+		workingCopy.migrate();
 	}
 
 	@Override
 	public boolean supportsMode(String mode) throws CoreException {
-		// TODO Auto-generated method stub
-		return false;
+		return workingCopy.supportsMode(mode);
 	}
 
 	@Override
 	public boolean isReadOnly() {
-		// TODO Auto-generated method stub
-		return false;
+		return workingCopy.isReadOnly();
 	}
 
 }

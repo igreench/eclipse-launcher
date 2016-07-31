@@ -11,11 +11,11 @@ import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.sourcelookup.ISourcePathComputer;
 
 public class TestLaunchConfigurationType implements ILaunchConfigurationType {
-	
+
 	private String name;
-	
+
 	public TestLaunchConfigurationType(String name) {
-		this.name = name;		
+		this.name = name;
 	}
 
 	@Override
@@ -25,7 +25,6 @@ public class TestLaunchConfigurationType implements ILaunchConfigurationType {
 
 	@Override
 	public String getAttribute(String attributeName) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -36,37 +35,31 @@ public class TestLaunchConfigurationType implements ILaunchConfigurationType {
 
 	@Override
 	public ILaunchConfigurationDelegate getDelegate() throws CoreException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ILaunchConfigurationDelegate getDelegate(String mode) throws CoreException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ILaunchDelegate[] getDelegates(Set<String> modes) throws CoreException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ILaunchDelegate getPreferredDelegate(Set<String> modes) throws CoreException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setPreferredDelegate(Set<String> modes, ILaunchDelegate delegate) throws CoreException {
-		// TODO Auto-generated method stub
-		
+		// do nothing
 	}
 
 	@Override
 	public boolean supportsModeCombination(Set<String> modes) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -97,13 +90,11 @@ public class TestLaunchConfigurationType implements ILaunchConfigurationType {
 
 	@Override
 	public Set<String> getSupportedModes() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Set<Set<String>> getSupportedModeCombinations() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -114,19 +105,17 @@ public class TestLaunchConfigurationType implements ILaunchConfigurationType {
 
 	@Override
 	public ILaunchConfigurationWorkingCopy newInstance(IContainer container, String name) throws CoreException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean supportsMode(String mode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public String getContributorName() {
-		return "xored guy"; //$NON-NLS-1$
+		return "xored candidate guy"; //$NON-NLS-1$
 	}
 
 }

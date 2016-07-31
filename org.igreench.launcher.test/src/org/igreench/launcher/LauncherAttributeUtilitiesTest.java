@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.igreench.launcher.model.ILauncherAttributeModel;
+import org.igreench.launcher.model.LauncherAttributeModel;
 
 public class LauncherAttributeUtilitiesTest {
 
@@ -20,7 +21,7 @@ public class LauncherAttributeUtilitiesTest {
 
 	@Before
 	public void beforeTest() {
-		configuration = new TestLaunchConfig();
+		configuration = new TestLaunchConfiguration();
 	}
 
 	@Test
@@ -30,7 +31,7 @@ public class LauncherAttributeUtilitiesTest {
 		assertEquals(0, attributeModel.getIterationsCount());
 
 		configuration.getWorkingCopy().setAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_COUNT, 5);
-		((TestWorkingCopy) configuration.getWorkingCopy()).update();
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
 		attributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 
 		assertEquals(5, attributeModel.getIterationsCount());
@@ -49,7 +50,7 @@ public class LauncherAttributeUtilitiesTest {
 		delays.add("10000");
 
 		configuration.getWorkingCopy().setAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_DELAY, delays);
-		((TestWorkingCopy) configuration.getWorkingCopy()).update();
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
 		attributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 		
 		List<String> delays2 = new ArrayList<>();
@@ -74,7 +75,7 @@ public class LauncherAttributeUtilitiesTest {
 		launches.add("launch 2");
 
 		configuration.getWorkingCopy().setAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_NAME, launches);
-		((TestWorkingCopy) configuration.getWorkingCopy()).update();
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
 		ILauncherAttributeModel attributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 		
 		List<String> launches2 = new ArrayList<>();
@@ -99,7 +100,7 @@ public class LauncherAttributeUtilitiesTest {
 		modes.add("mode 2");
 
 		configuration.getWorkingCopy().setAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_MODE, modes);
-		((TestWorkingCopy) configuration.getWorkingCopy()).update();
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
 		attributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 		
 		List<String> modes2 = new ArrayList<>();
@@ -124,7 +125,7 @@ public class LauncherAttributeUtilitiesTest {
 		indexes.add("1");
 
 		configuration.getWorkingCopy().setAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_ITERATION_INDEX, indexes);
-		((TestWorkingCopy) configuration.getWorkingCopy()).update();
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
 		attributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 		
 		List<String> indexes2 = new ArrayList<>();
@@ -136,6 +137,141 @@ public class LauncherAttributeUtilitiesTest {
 		indexes2.add("1");
 
 		assertNotEquals(indexes2, attributeModel.getLaunchIterationIndexes());
+	}
+
+	@Test
+	public void setAttributesIterationsCountTest() throws CoreException {
+		
+		assertEquals(-5, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_COUNT, -5));
+		
+		ILauncherAttributeModel attributeModel = new LauncherAttributeModel();
+		attributeModel.setIterationsCount(5);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+
+		assertEquals(5, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_COUNT, 0));
+		
+		attributeModel.setIterationsCount(3);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		assertNotEquals(5, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_COUNT, 0));
+	}
+
+	@Test
+	public void setAttributesIterationDelaysTest() throws CoreException {
+		
+		List<String> iterationDelays = new ArrayList<>();
+		iterationDelays.add("50000");
+		
+		assertEquals(iterationDelays, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_DELAY, iterationDelays));
+		
+		ILauncherAttributeModel attributeModel = new LauncherAttributeModel();
+		attributeModel.setIterationDelays(iterationDelays);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		List<String> iterationDelays2 = new ArrayList<>();
+		iterationDelays2.add("50000");
+
+		assertEquals(iterationDelays2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_DELAY, new ArrayList<>()));
+		
+		iterationDelays.add("20000");
+		attributeModel.setIterationDelays(iterationDelays);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		assertNotEquals(iterationDelays2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_ITERATIONS_DELAY, new ArrayList<>()));
+	}
+
+	@Test
+	public void setAttributesLaunchNamesTest() throws CoreException {
+		
+		List<String> launches = new ArrayList<>();
+		launches.add("launch1");
+		
+		assertEquals(launches, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_NAME, launches));
+		
+		ILauncherAttributeModel attributeModel = new LauncherAttributeModel();
+		attributeModel.setLaunchNames(launches);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		List<String> launches2 = new ArrayList<>();
+		launches2.add("launch1");
+
+		assertEquals(launches2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_NAME, new ArrayList<>()));
+		
+		launches = new ArrayList<>();
+		launches.add("launch2");
+		attributeModel.setLaunchNames(launches);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		assertNotEquals(launches2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_NAME, new ArrayList<>()));
+	}
+
+	@Test
+	public void setAttributesLaunchModesTest() throws CoreException {
+		
+		List<String> modes = new ArrayList<>();
+		modes.add("mode1");
+		
+		assertEquals(modes, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_MODE, modes));
+		
+		ILauncherAttributeModel attributeModel = new LauncherAttributeModel();
+		attributeModel.setLaunchModes(modes);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		List<String> modes2 = new ArrayList<>();
+		modes2.add("mode1");
+
+		assertEquals(modes2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_MODE, new ArrayList<>()));
+		
+		modes = new ArrayList<>();
+		modes.add("mode2");
+		attributeModel.setLaunchModes(modes);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		assertNotEquals(modes2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_MODE, new ArrayList<>()));
+	}
+
+	@Test
+	public void setAttributesLaunchIterationIndexesTest() throws CoreException {
+		
+		List<String> indexes = new ArrayList<>();
+		indexes.add("4");
+		
+		assertEquals(indexes, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_ITERATION_INDEX, indexes));
+		
+		ILauncherAttributeModel attributeModel = new LauncherAttributeModel();
+		attributeModel.setLaunchIterationIndexes(indexes);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		List<String> indexes2 = new ArrayList<>();
+		indexes2.add("4");
+
+		assertEquals(indexes2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_ITERATION_INDEX, new ArrayList<>()));
+		
+		indexes.add("1");
+		attributeModel.setLaunchIterationIndexes(indexes);
+		
+		LauncherAttributeUtilities.setAttributes(configuration.getWorkingCopy(), attributeModel);
+		((TestLaunchConfigurationWorkingCopy) configuration.getWorkingCopy()).update();
+		
+		assertNotEquals(indexes2, configuration.getAttribute(LauncherAttributes.ATTRIBUTE_LAUNCHES_ITERATION_INDEX, new ArrayList<>()));
 	}
 }
 

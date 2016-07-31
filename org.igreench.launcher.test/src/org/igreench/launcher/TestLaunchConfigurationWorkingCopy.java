@@ -18,26 +18,117 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchDelegate;
 
 public class TestLaunchConfigurationWorkingCopy implements ILaunchConfigurationWorkingCopy {
-	
-	private String name;
-	
-	private ILaunchConfigurationType type;
-	
-	private Map<String, Boolean> booleanAttributes = new HashMap<>();
-	private Map<String, Integer> intAttributes = new HashMap<>();
-	private Map<String, String> stringAttributes = new HashMap<>();
-	private Map<String, List<String>> listAttributes = new HashMap<>();
-	private Map<String, Set<String>> setAttributes = new HashMap<>();
-	private Map<String, Map<String, String>> mapAttributes = new HashMap<>();
-	
-	public TestLaunchConfigurationWorkingCopy(String name, ILaunchConfigurationType type) {
-		this.name = name;
-		this.type = type;
+
+	private TestLaunchConfiguration parent;
+
+	private Map<String, Object> attributes = new HashMap<String, Object>();
+
+	public TestLaunchConfigurationWorkingCopy(TestLaunchConfiguration parent) {
+		this.parent = parent;
+	}
+
+	public void update() {
+		parent.update(attributes);
+	}
+
+	@Override
+	public ILaunchConfiguration doSave() throws CoreException {
+		parent.update(attributes);
+		return parent;
+	}
+
+	@Override
+	public void addModes(Set<String> modes) {
+		// todo
+	}
+
+	@Override
+	public boolean hasAttribute(String attributeName) throws CoreException {
+		return attributes.containsKey(attributeName);
+	}
+
+	@Override
+	public Object removeAttribute(String attributeName) {
+		return attributes.remove(attributeName);
+	}
+
+	@Override
+	public ILaunchConfiguration getOriginal() {
+		return parent;
+	}
+
+	@Override
+	public ILaunchConfigurationWorkingCopy getParent() {
+		return null;
+	}
+
+	@Override
+	public boolean isDirty() {
+		return true;
+	}
+
+	@Override
+	public void removeModes(Set<String> modes) {
+		// do nothing
+	}
+
+	@Override
+	public void rename(String name) {
+		// do nothing
+	}
+
+	@Override
+	public void setAttribute(String attributeName, int value) {
+		attributes.put(attributeName, value);
+	}
+
+	@Override
+	public void setAttribute(String attributeName, String value) {
+		attributes.put(attributeName, value);
+	}
+
+	@Override
+	public void setAttribute(String attributeName, List<String> value) {
+		attributes.put(attributeName, value);
+	}
+
+	@Override
+	public void setAttribute(String attributeName, Map<String, String> value) {
+		attributes.put(attributeName, value);
+	}
+
+	@Override
+	public void setAttribute(String attributeName, boolean value) {
+		attributes.put(attributeName, value);
+	}
+
+	@Override
+	public void setAttributes(Map<String, ? extends Object> attributes) {
+		this.attributes.putAll(attributes);
+	}
+
+	@Override
+	public void setContainer(IContainer container) {
+		// do nothing
+	}
+
+	@Override
+	public void setMappedResources(IResource[] resources) {
+		// do nothing
+	}
+
+	@Override
+	public void setModes(Set<String> modes) {
+		// todo
+	}
+
+	@Override
+	public void setPreferredLaunchDelegate(Set<String> modes, String delegateId) {
+		// do nothing
 	}
 
 	@Override
 	public boolean contentsEqual(ILaunchConfiguration configuration) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -48,6 +139,7 @@ public class TestLaunchConfigurationWorkingCopy implements ILaunchConfigurationW
 
 	@Override
 	public void delete() throws CoreException {
+		// do nothing
 	}
 
 	@Override
@@ -57,87 +149,47 @@ public class TestLaunchConfigurationWorkingCopy implements ILaunchConfigurationW
 
 	@Override
 	public boolean getAttribute(String attributeName, boolean defaultValue) throws CoreException {
-		if (!booleanAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return booleanAttributes.get(attributeName);
+		return parent.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public int getAttribute(String attributeName, int defaultValue) throws CoreException {
-		if (!intAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return intAttributes.get(attributeName);
+		return parent.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public List<String> getAttribute(String attributeName, List<String> defaultValue) throws CoreException {
-		if (!listAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return listAttributes.get(attributeName);
+		return parent.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public Set<String> getAttribute(String attributeName, Set<String> defaultValue) throws CoreException {
-		if (!setAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return setAttributes.get(attributeName);
+		return parent.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
-	public Map<String, String> getAttribute(String attributeName, Map<String, String> defaultValue)
-			throws CoreException {
-		if (!mapAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return mapAttributes.get(attributeName);
+	public Map<String, String> getAttribute(String attributeName, Map<String, String> defaultValue) throws CoreException {
+		return parent.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public String getAttribute(String attributeName, String defaultValue) throws CoreException {
-		if (!stringAttributes.containsKey(attributeName)) {
-			return defaultValue;
-		}
-		return stringAttributes.get(attributeName);
+		return parent.getAttribute(attributeName, defaultValue);
 	}
 
 	@Override
 	public Map<String, Object> getAttributes() throws CoreException {
-		Map<String, Object> map = new HashMap<>();
-		
-		for (String attribute : booleanAttributes.keySet()) {
-			map.put(attribute, booleanAttributes.get(attribute));
-		}
-		
-		for (String attribute : intAttributes.keySet()) {
-			map.put(attribute, intAttributes.get(attribute));
-		}
-		
-		for (String attribute : stringAttributes.keySet()) {
-			map.put(attribute, stringAttributes.get(attribute));
-		}
-		
-		for (String attribute : listAttributes.keySet()) {
-			map.put(attribute, listAttributes.get(attribute));
-		}
-		
-		for (String attribute : setAttributes.keySet()) {
-			map.put(attribute, setAttributes.get(attribute));
-		}
-		
-		for (String attribute : mapAttributes.keySet()) {
-			map.put(attribute, mapAttributes.get(attribute));
-		}
-		
-		return map;
+		return attributes;
+	}
+
+	@Override
+	public void setAttribute(String attributeName, Set<String> value) {
+		attributes.put(attributeName, value);
 	}
 
 	@Override
 	public String getCategory() throws CoreException {
-		return null;
+		return parent.getCategory();
 	}
 
 	@Override
@@ -157,53 +209,52 @@ public class TestLaunchConfigurationWorkingCopy implements ILaunchConfigurationW
 
 	@Override
 	public String getMemento() throws CoreException {
-		return null;
+		return parent.getMemento();
+	}
+
+	@Override
+	public Set<String> getModes() throws CoreException {
+		return parent.getModes();
 	}
 
 	@Override
 	public String getName() {
-		return name;
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public Set<String> getModes() throws CoreException {
-		return type.getSupportedModes();
+		return parent.getName();
 	}
 
 	@Override
 	public ILaunchDelegate getPreferredDelegate(Set<String> modes) throws CoreException {
-		return null;
+		return parent.getPreferredDelegate(modes);
 	}
 
 	@Override
 	public ILaunchConfigurationType getType() throws CoreException {
-		return type;
+		return parent.getType();
 	}
 
 	@Override
 	public ILaunchConfigurationWorkingCopy getWorkingCopy() throws CoreException {
-		return this;
-	}
-
-	@Override
-	public boolean hasAttribute(String attributeName) throws CoreException {
-		return getAttributes().containsKey(attributeName);
+		return null;
 	}
 
 	@Override
 	public boolean isLocal() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean isMigrationCandidate() throws CoreException {
-		return true;
+		return false;
+	}
+
+	@Override
+	public boolean isReadOnly() {
+		return false;
 	}
 
 	@Override
 	public boolean isWorkingCopy() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -223,131 +274,16 @@ public class TestLaunchConfigurationWorkingCopy implements ILaunchConfigurationW
 
 	@Override
 	public void migrate() throws CoreException {
+		// do nothing
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean supportsMode(String mode) throws CoreException {
-		return type.getSupportedModes().contains(mode);
-	}
-
-	@Override
-	public boolean isReadOnly() {
 		return false;
 	}
 
 	@Override
 	public <T> T getAdapter(Class<T> adapter) {
-		return null;
-	}
-
-	@Override
-	public boolean isDirty() {
-		return false;
-	}
-
-	@Override
-	public ILaunchConfiguration doSave() throws CoreException {
-		return null;
-	}
-
-	@Override
-	public void setAttribute(String attributeName, int value) {
-		intAttributes.put(attributeName, value);		
-	}
-
-	@Override
-	public void setAttribute(String attributeName, String value) {
-		stringAttributes.put(attributeName, value);	
-	}
-
-	@Override
-	public void setAttribute(String attributeName, List<String> value) {
-		listAttributes.put(attributeName, value);	
-	}
-
-	@Override
-	public void setAttribute(String attributeName, Map<String, String> value) {
-		mapAttributes.put(attributeName, value);	
-	}
-
-	@Override
-	public void setAttribute(String attributeName, Set<String> value) {
-		setAttributes.put(attributeName, value);	
-	}
-
-	@Override
-	public void setAttribute(String attributeName, boolean value) {
-		booleanAttributes.put(attributeName, value);	
-	}
-
-	@Override
-	public ILaunchConfiguration getOriginal() {
-		return null;
-	}
-
-	@Override
-	public void rename(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public void setContainer(IContainer container) {
-	}
-
-	@Override
-	public void setAttributes(Map<String, ? extends Object> attributes) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public void setMappedResources(IResource[] resources) {
-	}
-
-	@Override
-	public void setModes(Set<String> modes) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public void setPreferredLaunchDelegate(Set<String> modes, String delegateId) {
-	}
-
-	@Override
-	public void addModes(Set<String> modes) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public void removeModes(Set<String> modes) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public Object removeAttribute(String attributeName) {
-		if (booleanAttributes.containsKey(attributeName)) {
-			return booleanAttributes.remove(attributeName);
-		}
-		if (intAttributes.containsKey(attributeName)) {
-			return intAttributes.remove(attributeName);
-		}
-		if (stringAttributes.containsKey(attributeName)) {
-			return stringAttributes.remove(attributeName);
-		}
-		if (listAttributes.containsKey(attributeName)) {
-			return listAttributes.remove(attributeName);
-		}
-		if (setAttributes.containsKey(attributeName)) {
-			return setAttributes.remove(attributeName);
-		}
-		if (mapAttributes.containsKey(attributeName)) {
-			return mapAttributes.remove(attributeName);
-		}
-		return null;
-	}
-
-	@Override
-	public ILaunchConfigurationWorkingCopy getParent() {
 		return null;
 	}
 

@@ -20,7 +20,12 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate2;
 
+import org.igreench.launcher.LauncherAttributeUtilities;
 import org.igreench.launcher.LauncherPlugin;
+import org.igreench.launcher.model.ILauncherAttributeModel;
+import org.igreench.launcher.LauncherPlugin.CycledLauncherAttributeModelException;
+import org.igreench.launcher.LauncherPlugin.DeletedLaunchLauncherAttributeModelException;
+import org.igreench.launcher.LauncherPlugin.LauncherAttributeModelException;
 
 public class LauncherDelegate implements ILaunchConfigurationDelegate2 {
 
@@ -49,6 +54,29 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate2 {
 					DebugPlugin.INTERNAL_ERROR, "Received not Launcher launch object", null)); //$NON-NLS-1$
 		}
 
+		if (!LauncherPlugin.getDefault().isValid()) {
+			try {
+				ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities
+						.getAttributes(configuration);
+
+				LauncherPlugin.getDefault().validate(configuration, launcherAttributeModel);
+
+			} catch (DeletedLaunchLauncherAttributeModelException e) {
+				throw new CoreException(new Status(IStatus.ERROR, DebugPlugin.getUniqueIdentifier(),
+						DebugPlugin.INTERNAL_ERROR, "Found deleted launch", null)); //$NON-NLS-1$
+
+			} catch (CycledLauncherAttributeModelException e) {
+				throw new CoreException(new Status(IStatus.ERROR, DebugPlugin.getUniqueIdentifier(),
+						DebugPlugin.INTERNAL_ERROR, "Launcher's launch cycled", null)); //$NON-NLS-1$
+
+			} catch (LauncherAttributeModelException e) {
+				LauncherPlugin.log(e);
+
+			} catch (CoreException e) {
+				LauncherPlugin.log(e);
+			}
+		}
+
 		launcherLaunch = (LauncherLaunch) commonLaunch;
 
 		try {
@@ -56,8 +84,8 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate2 {
 				int value = launcherLaunch.getIterationDelay(i);
 
 				if (-1 == value) {
-					LauncherLaunchUtilities.launch(launcherLaunch.getLaunches().get(i), launcherLaunch.getModes().get(i), launcherLaunch,
-							monitor);
+					LauncherLaunchUtilities.launch(launcherLaunch.getLaunches().get(i),
+							launcherLaunch.getModes().get(i), launcherLaunch, monitor);
 				} else {
 					LauncherLaunchUtilities.delay(value);
 				}

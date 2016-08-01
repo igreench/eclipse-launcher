@@ -12,4 +12,7 @@ Eclipse Launcher Plug-ins for composite launches.
 
 Launches in one iteration will be wait terminating previous launches.
 
+### Screenshots
+<img src="https://yadi.sk/i/Fz5fO44qtnx9i" />
+
 

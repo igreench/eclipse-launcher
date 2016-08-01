@@ -20,8 +20,13 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.igreench.launcher.LauncherPlugin;
 
+/**
+ * Launcher launches utilities class. Provide access to launch launcher's
+ * launch.
+ *
+ */
 final class LauncherLaunchUtilities {
-	
+
 	/**
 	 * Launch group of launches. Launches in one group will be wait terminating
 	 * previous launches.
@@ -41,15 +46,17 @@ final class LauncherLaunchUtilities {
 
 		ILaunch currentLaunch = launch(configurations.get(0), modes.get(0), monitor);
 
-		LauncherLaunchesListener launcherListener = new LauncherLaunchesListener(commonLaunch, currentLaunch, configurations,
-				modes, 1, monitor);
+		LauncherLaunchesListener launcherListener = new LauncherLaunchesListener(commonLaunch, currentLaunch,
+				configurations, modes, 1, monitor);
 
 		DebugPlugin.getDefault().getLaunchManager().addLaunchListener(launcherListener);
 	}
 
 	/**
 	 * Delay method
-	 * @param value - the length of time to sleep in milliseconds
+	 * 
+	 * @param value
+	 *            - the length of time to sleep in milliseconds
 	 */
 	public static void delay(int value) {
 		try {
@@ -62,8 +69,10 @@ final class LauncherLaunchUtilities {
 	/**
 	 * Launch new launch and return it.
 	 * 
-	 * @param configuration - launch configuration
-	 * @param mode - launch mode
+	 * @param configuration
+	 *            - launch configuration
+	 * @param mode
+	 *            - launch mode
 	 * @param monitor
 	 * @return new launch
 	 * @throws CoreException
@@ -73,8 +82,9 @@ final class LauncherLaunchUtilities {
 		ILaunch nextLaunch = configuration.launch(mode, monitor);
 		return nextLaunch;
 	}
-	
+
 	/**
+	 * Launch next launch of current launcher's iteration.
 	 * 
 	 * @param commonLaunch
 	 * @param currentLaunch
@@ -106,7 +116,7 @@ final class LauncherLaunchUtilities {
 								nextLaunchIndex + 1, monitor);
 					}
 				});
-				
+
 			} else {
 				DebugPlugin.getDefault().getLaunchManager().addLaunchListener(new LauncherLaunchesListener(commonLaunch,
 						nextLaunch, configurations, modes, nextLaunchIndex + 1, monitor));
@@ -116,7 +126,7 @@ final class LauncherLaunchUtilities {
 			LauncherPlugin.log(e);
 		}
 	}
-	
+
 	private LauncherLaunchUtilities() {
 		// Not instantiable
 	}

@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.igreench.launcher.model;
 
+/**
+ * Launcher model listener interface.
+ * Provide access to method of changed launcher model event.
+ *|
+ */
 public interface ILauncherModelListener {
 	
 	public void launcherModelChanged();

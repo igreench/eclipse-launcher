@@ -24,6 +24,10 @@ import org.junit.Test;
 import org.igreench.launcher.model.ILauncherAttributeModel;
 import org.igreench.launcher.model.LauncherAttributeModel;
 
+/**
+ * Testing class LauncherAttributeUtilities
+ *
+ */
 public class LauncherAttributeUtilitiesTest {
 
 	private ILaunchConfiguration configuration;

@@ -17,6 +17,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 
+/**
+ * Launcher ui widgets utilities class.
+ *
+ */
 public final class LauncherUIWidgetsUtilities {
 	
 	public static final int BUTTON_WIDTH_HINT = 90;

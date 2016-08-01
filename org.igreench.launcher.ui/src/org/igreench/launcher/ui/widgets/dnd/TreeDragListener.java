@@ -16,6 +16,10 @@ import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+/**
+ * Tree drag listener class
+ *
+ */
 public class TreeDragListener implements DragSourceListener {
 	
 	private Tree tree;

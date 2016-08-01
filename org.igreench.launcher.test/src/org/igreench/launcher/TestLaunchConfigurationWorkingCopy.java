@@ -27,6 +27,10 @@ import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchDelegate;
 
+/**
+ * Testing helper class of launch configuration working copy
+ *
+ */
 public class TestLaunchConfigurationWorkingCopy implements ILaunchConfigurationWorkingCopy {
 
 	private TestLaunchConfiguration parent;

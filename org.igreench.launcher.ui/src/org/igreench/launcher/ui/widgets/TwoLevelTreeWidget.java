@@ -38,6 +38,21 @@ import org.igreench.launcher.ui.widgets.dnd.TreeDragListener;
 import org.igreench.launcher.ui.widgets.dnd.TreeDropListener;
 import org.igreench.launcher.ui.widgets.dnd.IDNDModel.IDNDListener;
 
+/**
+ * Two level tree widget class.
+ * First level - roots.
+ * Second level - nodes. 
+ * Provides:
+ * <ul>
+ * <li>access to the adding roots and nodes</li>
+ * <li>access to the editing roots and nodes</li>
+ * <li>access to the removing roots and nodes</li>
+ * <li>access to the clearing widget</li>
+ * <li>access to the getting roots and nodes</li>
+ * <li>access to the getting selected nodes</li>
+ * <li>access to the drag and drop</li>
+ * </ul>
+ */
 public class TwoLevelTreeWidget implements ITwoLevelTreeWidget {
 
 	private Tree tree;

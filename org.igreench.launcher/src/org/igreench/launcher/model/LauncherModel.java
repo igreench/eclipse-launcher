@@ -22,6 +22,10 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.igreench.launcher.LauncherPlugin;
 
+/**
+ * Launcher model class.
+ *
+ */
 public class LauncherModel implements ILauncherModel {
 
 	/**

@@ -27,6 +27,10 @@ import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchDelegate;
 
+/**
+ * Testing helper class of launch configuration
+ *
+ */
 public class TestLaunchConfiguration implements ILaunchConfiguration {
 
 	private Map<String, Object> attributes = new HashMap<String, Object>();

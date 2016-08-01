@@ -48,7 +48,7 @@ class LauncherLaunch extends Launch {
 		this.configuration = configuration;
 		init();
 	}
-
+	
 	protected void init() throws CoreException {
 		launcherAttributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 

@@ -16,6 +16,10 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Display;
 
+/**
+ * Tree dialog class
+ *
+ */
 public class TreeDialog extends Dialog {
 
 	private static final int TREE_DIALOG_WIDTH = 600;

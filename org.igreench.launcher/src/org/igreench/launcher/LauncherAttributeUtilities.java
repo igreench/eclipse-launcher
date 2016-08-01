@@ -20,6 +20,9 @@ import org.igreench.launcher.LauncherAttributes;
 import org.igreench.launcher.model.ILauncherAttributeModel;
 import org.igreench.launcher.model.LauncherAttributeModel;
 
+/**
+ * Launcher attribute utilities class.
+ */
 public final class LauncherAttributeUtilities {
 
 	public static ILauncherAttributeModel getAttributes(ILaunchConfiguration configuration)

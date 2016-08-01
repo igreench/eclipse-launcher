@@ -12,6 +12,10 @@ package org.igreench.launcher.ui;
 
 import org.eclipse.osgi.util.NLS;
 
+/**
+ * Launcher ui errors class of natural language strings.
+ *
+ */
 public final class LauncherUIErrors extends NLS { 
 	
 	private static final String BUNDLE_NAME = "org.igreench.launcher.ui.LauncherUIErrors"; //$NON-NLS-1$

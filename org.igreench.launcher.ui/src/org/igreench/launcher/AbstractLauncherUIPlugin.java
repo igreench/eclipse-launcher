@@ -17,6 +17,16 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+/**
+ * Launcher ui plug-in abstract class <It provides:
+ * <ul>
+ * <li>access to image and image descriptor</li>
+ * <li>access to standard display</li>
+ * <li>access to plug-in id</li>
+ * </ul>
+ * 
+ * @noinstantiate This class is not intended to be instantiated by clients.
+ */
 public class AbstractLauncherUIPlugin extends AbstractUIPlugin {
 
 	private boolean imageRegistryCreated = false;

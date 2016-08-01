@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.igreench.launcher;
 
+/**
+ * Java utilities class
+ */
 public final class JavaUtilities {
-	
+
 	public static int strToInt(String str, int defaultValue) {
 		try {
 			return Integer.parseInt(str);

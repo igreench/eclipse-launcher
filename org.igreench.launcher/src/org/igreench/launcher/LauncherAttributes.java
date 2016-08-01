@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.igreench.launcher;
 
+/**
+ * Launcher attributes class of constants
+ */
 public final class LauncherAttributes {
 
 	public static final String ATTRIBUTE_LAUNCHES_NAME = LauncherPlugin.PLUGIN_ID + ".launches.name"; //$NON-NLS-1$

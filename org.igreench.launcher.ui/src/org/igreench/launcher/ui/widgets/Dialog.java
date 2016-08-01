@@ -23,6 +23,17 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+/**
+ * Dialog class. Provides:
+ * <ul>
+ * <li>init modal shell</li>
+ * <li>access to shell text</li>
+ * <li>access to label text</li>
+ * <li>has abstract body</li>
+ * <li>has buttons "Ok" and "Cancel"</li>
+ * <li>access to method of handling selection of ok button</li>
+ * </ul>
+ */
 public abstract class Dialog {
 
 	private static final String BUTTON_OK_TEXT = "Ok"; //$NON-NLS-1$

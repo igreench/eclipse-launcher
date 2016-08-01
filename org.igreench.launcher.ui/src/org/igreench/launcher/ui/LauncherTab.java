@@ -42,6 +42,12 @@ import org.igreench.launcher.ui.widgets.dnd.IDNDModel.IDNDListener;
 import org.igreench.launcher.ui.widgets.ITwoLevelTreeWidget;
 import org.igreench.launcher.ui.widgets.LauncherUIWidgetsUtilities;
 
+/**
+ * Launcher tab.
+ * 
+ * Tab shows iteration, delays, launcher's and other launches. Tab has ui for
+ * control launcher's data.
+ */
 public class LauncherTab extends AbstractLaunchConfigurationTab {
 
 	private ITwoLevelTreeWidget launcherWidget;
@@ -57,7 +63,7 @@ public class LauncherTab extends AbstractLaunchConfigurationTab {
 	private Button buttonDelete;
 
 	public LauncherTab() {
-		super();		
+		super();
 	}
 
 	@Override
@@ -220,7 +226,7 @@ public class LauncherTab extends AbstractLaunchConfigurationTab {
 		delayDialog.addOkListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				LauncherUIUtilities.addDelay(launcherWidget, delayDialog.getValue());				
+				LauncherUIUtilities.addDelay(launcherWidget, delayDialog.getValue());
 				delayDialog.close();
 				updateLaunchConfigurationDialog();
 			}

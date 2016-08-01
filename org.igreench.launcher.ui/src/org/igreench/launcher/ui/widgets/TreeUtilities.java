@@ -16,6 +16,10 @@ import java.util.List;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+/**
+ * Tree utilities class.
+ *
+ */
 public final class TreeUtilities {
 
 	public static List<List<String>> getRootNames(Tree tree) {

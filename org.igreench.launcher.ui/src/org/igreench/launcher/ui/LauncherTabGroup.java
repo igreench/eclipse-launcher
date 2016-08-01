@@ -17,6 +17,10 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab;
 
 import org.eclipse.debug.ui.CommonTab;
 
+/**
+ * Launcher tab group class
+ *
+ */
 public class LauncherTabGroup extends AbstractLaunchConfigurationTabGroup {
 
 	@Override

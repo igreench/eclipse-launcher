@@ -13,6 +13,11 @@ package org.igreench.launcher.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Launcher attribute model class.
+ * Provide access to launcher's attributes.
+ *
+ */
 public class LauncherAttributeModel implements ILauncherAttributeModel {
 
 	private int iterationsCount = 0;

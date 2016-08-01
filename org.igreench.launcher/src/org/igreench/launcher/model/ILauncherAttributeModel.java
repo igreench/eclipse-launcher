@@ -12,6 +12,10 @@ package org.igreench.launcher.model;
 
 import java.util.List;
 
+/**
+ * Launcher attribute model interface.
+ *
+ */
 public interface ILauncherAttributeModel {
 	
 	public int getIterationsCount();	

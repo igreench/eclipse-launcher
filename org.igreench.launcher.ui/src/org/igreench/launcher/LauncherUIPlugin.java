@@ -31,7 +31,17 @@ import org.igreench.launcher.ui.LauncherUIUtilities;
 import org.igreench.launcher.ui.widgets.ITwoLevelTreeWidget;
 
 /**
- * The activator class controls the plug-in life cycle
+ * There is one instance of the launcher ui plug-in available from
+ * <code>LauncherUI.getDefault()</code>. The launcher ui plug-in provides:
+ * <ul>
+ * <li>access to the launcher model</li>
+ * <li>access to the launcher ui model</li>
+ * <li>access to images</li>
+ * <li>getting and setting attributes</li>
+ * <li>status handlers</li>
+ * </ul>
+ * 
+ * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public class LauncherUIPlugin extends AbstractLauncherUIPlugin {
 
@@ -183,13 +193,13 @@ public class LauncherUIPlugin extends AbstractLauncherUIPlugin {
 
 				// (-1 == value) -> add iteration;
 				// (-1 != value) -> add delay.
-				
+
 				if (-1 == value) {
 					launcherWidget.addRoot(LauncherUIUtilities.getIterationName(),
 							LauncherUIPlugin.getDefault().getIterationImage(), true, true);
-					
+
 				} else {
-					
+
 					launcherWidget.addRoot(LauncherUIUtilities.getDelayName(value),
 							LauncherUIPlugin.getDefault().getDelayImage(), true, false);
 				}

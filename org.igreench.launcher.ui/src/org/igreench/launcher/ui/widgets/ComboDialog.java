@@ -17,6 +17,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Display;
 
+/**
+ * Combo dialog class
+ *
+ */
 public class ComboDialog extends Dialog {
 
 	private static final int COMBO_DIALOG_WIDTH = 300;

@@ -23,6 +23,10 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.igreench.launcher.ui.widgets.TreeUtilities;
 
+/**
+ * Tree drop listener class
+ *
+ */
 public class TreeDropListener extends DropTargetAdapter {
 
 	private Tree tree;

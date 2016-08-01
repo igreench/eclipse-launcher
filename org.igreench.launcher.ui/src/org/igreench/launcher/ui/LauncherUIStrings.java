@@ -12,6 +12,10 @@ package org.igreench.launcher.ui;
 
 import org.eclipse.osgi.util.NLS;
 
+/**
+ * Launcher ui strings class of natural language strings.
+ *
+ */
 public final class LauncherUIStrings extends NLS { 
 
 	private static final String BUNDLE_NAME = "org.igreench.launcher.ui.LauncherUIStrings"; //$NON-NLS-1$

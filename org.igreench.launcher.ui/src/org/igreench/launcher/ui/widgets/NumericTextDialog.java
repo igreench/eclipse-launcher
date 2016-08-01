@@ -17,6 +17,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * Numeric text dialog class
+ *
+ */
 public class NumericTextDialog extends Dialog {
 
 	private static final int NUMERIC_TEXT_DIALOG_WIDTH = 300;

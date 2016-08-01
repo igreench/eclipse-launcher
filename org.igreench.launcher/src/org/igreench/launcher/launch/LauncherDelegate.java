@@ -54,6 +54,7 @@ public class LauncherDelegate implements ILaunchConfigurationDelegate2 {
 					DebugPlugin.INTERNAL_ERROR, "Received not Launcher launch object", null)); //$NON-NLS-1$
 		}
 
+		// validation
 		try {
 			ILauncherAttributeModel launcherAttributeModel = LauncherAttributeUtilities.getAttributes(configuration);
 

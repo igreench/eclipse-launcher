@@ -13,6 +13,10 @@ package org.igreench.launcher;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.igreench.launcher.model.LauncherModel;
 
+/**
+ * Testing helper class of launcher model
+ *
+ */
 public class TestLauncherModel extends LauncherModel {
 	public TestLauncherModel(ILaunchConfiguration[] launchConfigurations) {
 		for (ILaunchConfiguration launchConfiguration : launchConfigurations) {

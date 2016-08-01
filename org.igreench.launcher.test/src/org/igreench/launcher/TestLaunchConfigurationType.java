@@ -20,6 +20,10 @@ import org.eclipse.debug.core.ILaunchDelegate;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.sourcelookup.ISourcePathComputer;
 
+/**
+ * Testing helper class of launch configuration type
+ *
+ */
 public class TestLaunchConfigurationType implements ILaunchConfigurationType {
 
 	private String name;

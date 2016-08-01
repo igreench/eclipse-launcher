@@ -18,6 +18,21 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TreeItem;
 import org.igreench.launcher.ui.widgets.dnd.IDNDModel.IDNDListener;
 
+/**
+ * Two level tree widget interface.
+ * First level - roots.
+ * Second level - nodes. 
+ * Provides:
+ * <ul>
+ * <li>access to the adding roots and nodes</li>
+ * <li>access to the editing roots and nodes</li>
+ * <li>access to the removing roots and nodes</li>
+ * <li>access to the clearing widget</li>
+ * <li>access to the getting roots and nodes</li>
+ * <li>access to the getting selected nodes</li>
+ * <li>access to the drag and drop</li>
+ * </ul>
+ */
 public interface ITwoLevelTreeWidget {
 	
 	public void initWidget();

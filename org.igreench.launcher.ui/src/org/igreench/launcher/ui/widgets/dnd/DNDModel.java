@@ -15,6 +15,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Drag and drop model interface. Provides access to method of control draggable
+ * and droppable items of <T> type
+ *
+ * @param <T>
+ */
 public class DNDModel<T> implements IDNDModel<T> {
 	
 	private List<List<T>> items = new ArrayList<List<T>>();
